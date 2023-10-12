@@ -6,3 +6,4 @@ export { Dropdown } from "./Dropdown";
 export { Table } from "./Table";
 export { Error } from "./Error";
 export { CurrencyItem } from "./CurrencyItem";
+export { Loading } from "./Loading";

@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./List.module.scss";
-import { Error, Table } from "../../components";
+import { Error, Loading, Table } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
    ResetState,
@@ -69,7 +69,7 @@ export const List: FC = () => {
                <Table data={currencies} columns={columns} />
             )}
          </main>
-         {loading && <div>Loading...</div>}
+         {loading && <Loading />}
       </div>
    );
 };

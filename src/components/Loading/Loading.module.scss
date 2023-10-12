@@ -1,0 +1,40 @@
+@import "../../assets/styles/index.scss";
+
+.loader {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.side {
+   width: 0;
+   height: 0;
+   border-left: 40px solid transparent;
+   border-right: 40px solid transparent;
+   border-bottom: 60px solid transparent;
+   margin: 0 10px;
+   animation: changeColor 1s infinite alternate;
+}
+
+@keyframes changeColor {
+   0% {
+      border-left-color: #FFA500;
+   }
+
+   33.33% {
+      border-bottom-color: #FFA500;
+
+   }
+
+   66.67% {
+      border-right-color: #FFA500;
+
+   }
+
+   100% {
+      border-left-color: #FFD700;
+      border-bottom-color: #FFD700;
+      border-right-color: #FFD700;
+
+   }
+}

@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import styles from './Home.module.scss';
-import { CurrencyItem, Dropdown, Error } from '../../components';
+import { CurrencyItem, Dropdown, Error, Loading } from '../../components';
 import { ICurrency } from '../../interfaces/currencies';
 import { useCurrencyConverter } from '../../utils/hook/useCurrencyConverter';
 import {
@@ -54,7 +54,7 @@ export const Home: FC = () => {
       <div className={styles.home}>
          <h1 className={styles.title}>Currency Converter</h1>
          {loading ? (
-            <div>Loading...</div>
+            <Loading />
          ) : (
             <main className={styles.content}>
                {currenciesLoaded && Array.isArray(currencies) && Array.isArray(selectedCurrencies) && currencies
