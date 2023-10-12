@@ -44,4 +44,22 @@ The project is structured as follows:
 
 Feel free to explore these folders and files to understand the project's structure and components.
 
+## Getting Started
+
+To run the project locally, follow these steps:
+
+1. Clone the repository and navigate to the project folder:
+
+   ```bash
+   git clone https://github.com/andreu64388/React-task.git
+    ```
+2. Install the project dependencies:
+
+   ```bash
+   cd frontend
+   npm install
+   npm run start
+    ```
+3. The application should now be running locally. Open your web browser and access the application at [Currency Converter App](https://andreu64388.github.io/React-task/). You can start using the currency conversion features right away.
+
 
