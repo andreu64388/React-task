@@ -49,5 +49,5 @@
   "devDependencies": {
     "sass": "^1.69.2"
   },
-  "proxy": "http://localhost:5000/api"
+  "proxy": "https://nest-task-production.up.railway.app/api"
 }
