@@ -8,10 +8,10 @@ interface InputProps {
    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export const Input: FC<InputProps> = ({ value, onChange, onFocus, onBlur }) => {
+export const Input: FC<InputProps> = ({ value, onChange, onFocus, onBlur, }) => {
    return (
       <input
-         type="text"
+         type="number"
          className={styles.input}
          value={value}
          onChange={onChange}

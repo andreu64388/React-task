@@ -7,14 +7,16 @@ interface ILayoutMain {
 
 export const LayoutMain: FC<ILayoutMain> = ({ children }) => {
    return (
-      <div>
+      <div className={styles.layout}>
          <Header />
          <Container>
             <main className={styles.main}>
                {children}
             </main>
          </Container>
-         <Footer />
+         <div className={styles.footer}>
+            <Footer />
+         </div>
       </div>
    )
 }
