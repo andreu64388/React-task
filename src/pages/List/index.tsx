@@ -18,6 +18,7 @@ export const List: FC = () => {
    const [sortField, setSortField] = useState<"NAME" | "VALUE">("NAME");
    const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("ASC");
 
+
    useEffect(() => {
       const storedSortOrder = localStorage.getItem("sortOrder");
 
@@ -56,7 +57,11 @@ export const List: FC = () => {
       <div className={styles.list}>
          <h1 className={styles.title}>List</h1>
          <main className={styles.content}>
-            <Table data={currencies} columns={columns} />
+            {
+               Array.isArray(currencies) && currencies.length > 0 &&
+               <Table data={currencies} columns={columns} />
+            }
+
          </main>
          {loading && <div>Loading...</div>}
       </div>
