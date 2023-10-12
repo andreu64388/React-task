@@ -4,11 +4,12 @@
 .list {
    display: flex;
    flex-direction: column;
-   gap: 5px;
+   gap: 10px;
+   text-align: center;
 
    .title {
+      margin-bottom: 30px;
       font-size: 25px;
       color: rgb(20, 80, 155);
    }
 }
-

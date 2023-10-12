@@ -7,17 +7,21 @@ $hover-bg: rgba(20, 80, 155, 0.8);
 .table {
    width: 100%;
    border-collapse: collapse;
-   margin: 20px 0;
    font-family: Arial, sans-serif;
+
 
    th {
       background-color: $primary-bg;
       color: #fff;
       font-weight: bold;
-      text-align: left;
+
       padding: 8px;
       cursor: pointer;
       transition: background-color 0.2s;
+
+      &::first-letter {
+         text-transform: uppercase;
+      }
 
       &:hover {
          background-color: $hover-bg;

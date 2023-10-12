@@ -17,7 +17,7 @@ export const List: FC = () => {
 
    const [sortField, setSortField] = useState<"NAME" | "VALUE">("NAME");
    const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("ASC");
-
+   const [isFetching, setIsFetching] = useState(false); // Добавлено состояние для блокировки запроса
 
    useEffect(() => {
       const storedSortOrder = localStorage.getItem("sortOrder");
@@ -27,22 +27,31 @@ export const List: FC = () => {
          setSortField(field);
          setSortOrder(order);
 
-         dispatch(fetchCurrencyConversions({ sort: field, order }));
-      }
-      else {
-         dispatch(fetchCurrencyConversions());
+         fetchConversions(field, order);
+      } else {
+         fetchConversions();
       }
       return () => {
-         dispatch(ResetState())
-      }
+         dispatch(ResetState());
+      };
    }, [dispatch]);
+
+   const fetchConversions = (field?: "NAME" | "VALUE", order?: "ASC" | "DESC") => {
+      if (!isFetching) {
+         setIsFetching(true);
+         dispatch(fetchCurrencyConversions({ sort: field || sortField, order: order || sortOrder }))
+            .then(() => {
+               setIsFetching(false);
+            });
+      }
+   };
 
    const handleSortClick = (field: "NAME" | "VALUE") => {
       const order = field === sortField ? (sortOrder === "ASC" ? "DESC" : "ASC") : "ASC";
       localStorage.setItem("sortOrder", JSON.stringify({ field, order }));
       setSortField(field);
       setSortOrder(order);
-      dispatch(fetchCurrencyConversions({ sort: field, order: order }));
+      fetchConversions(field, order);
    };
 
    const columns = [
@@ -50,17 +59,15 @@ export const List: FC = () => {
       { title: "value", onClick: () => handleSortClick("VALUE") },
    ];
 
-
    if (error) return <Error error={error} />
 
    return (
       <div className={styles.list}>
          <h1 className={styles.title}>List</h1>
          <main className={styles.content}>
-            {
-               Array.isArray(currencies) && currencies.length > 0 &&
+            {Array.isArray(currencies) && currencies.length > 0 && (
                <Table data={currencies} columns={columns} />
-            }
+            )}
          </main>
          {loading && <div>Loading...</div>}
       </div>

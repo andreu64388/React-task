@@ -1,9 +1,9 @@
 import axios, { AxiosInstance } from "axios";
 
-const baseURL = process.env.API_SERVER;
+const baseURL = "https://nest-task-production.up.railway.app/api";
 
 const instance: AxiosInstance = axios.create({
-  baseURL: "https://nest-task-production.up.railway.app/api",
+  baseURL: baseURL,
 });
 
 export default instance;

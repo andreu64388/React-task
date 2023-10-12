@@ -3,7 +3,7 @@ import styles from './Dropdown.module.scss';
 
 interface DropdownProps {
    options: IOption[];
-   onSelect: (value: IOption) => void; 
+   onSelect: (value: IOption) => void;
    children?: React.ReactNode;
 }
 
@@ -14,8 +14,9 @@ interface IOption {
 
 export const Dropdown: FC<DropdownProps> = ({ options, onSelect, children }) => {
    const [isOpen, setIsOpen] = useState<boolean>(false);
-   const [selectedOption, setSelectedOption] = useState<IOption | undefined>(); 
+   const [selectedOption, setSelectedOption] = useState<IOption | undefined>();
    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
 
    const toggleDropdown = () => {
       setIsOpen(!isOpen);
@@ -47,18 +48,23 @@ export const Dropdown: FC<DropdownProps> = ({ options, onSelect, children }) => 
          </button>
          {isOpen && (
             <div className={styles.dropdown}>
-               {options.map((option) => (
-                  <div
-                     key={option.id}
-                     className={styles.option}
-                     onClick={() => handleOptionClick(option)}
-                  >
-                     {option.name}
+               {options?.length > 0 ? (
+                  options.map((option) => (
+                     <div
+                        key={option.id}
+                        className={styles.option}
+                        onClick={() => handleOptionClick(option)}
+                     >
+                        {option.name}
+                     </div>
+                  ))
+               ) : (
+                  <div className={styles.option}>
+                     Not a elements
                   </div>
-               ))}
+               )}
             </div>
-         )
-         }
+         )}
       </div>
    );
 };

@@ -13,6 +13,7 @@ export const routerConfig = createBrowserRouter([
          {
             path: "/",
             element: <Home />,
+
          },
          {
             path: "/list",
