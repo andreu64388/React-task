@@ -21,9 +21,11 @@ export function useCurrencyConverter() {
 
   useEffect(() => {
     const initialInputValues: InputValues = {};
-    currencies.forEach((currency: any) => {
-      initialInputValues[currency.name] = currency.value.toString();
-    });
+    if (Array.isArray(currencies)) {
+      currencies.forEach((currency: any) => {
+        initialInputValues[currency.name] = currency.value.toString();
+      });
+    }
     setInputValues(initialInputValues);
   }, [currencies]);
 
