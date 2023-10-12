@@ -57,9 +57,9 @@ export const Home: FC = () => {
             <div>Loading...</div>
          ) : (
             <main className={styles.content}>
-               {currenciesLoaded && currencies
-                  .filter((currency: ICurrency) => !selectedCurrencies.includes(currency.id))
-                  .map((currency: ICurrency) => (
+               {currenciesLoaded && currencies?.filter((currency: ICurrency) => !selectedCurrencies?.
+                  includes(currency.id))?.
+                  map((currency: ICurrency) => (
                      <CurrencyItem
                         key={currency.id}
                         currency={currency}
@@ -69,9 +69,11 @@ export const Home: FC = () => {
                   ))}
                {currenciesLoaded && (
                   <Dropdown
-                     options={currencies
-                        .filter((currency: ICurrency) => selectedCurrencies.includes(currency.id))
-                        .map((currency: ICurrency) => ({
+                     options={currencies?.
+                        filter((currency: ICurrency) =>
+                           selectedCurrencies?.
+                              includes(currency.id))?.
+                        map((currency: ICurrency) => ({
                            id: currency.id,
                            name: currency.name,
                         }))}
