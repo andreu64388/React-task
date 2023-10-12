@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# React Currency Converter App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Currency Converter App](https://react-task-sage-three.vercel.app/)
 
-## Available Scripts
+This is a React application for currency conversion. It's built using TypeScript, Redux Toolkit, React Router DOM, and SCSS modules.
 
-In the project directory, you can run:
+## Project Structure
 
-### `npm start`
+The project is structured as follows:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **src**: The main source code folder.
+  - **api**: Contains endpoint configurations and functions for making server requests.
+  - **components**: Reusable UI components used throughout the application.
+  - **layouts**: Layout components for structuring the pages.
+  - **interfaces**: Contains TypeScript interface definitions.
+  - **services**: Contains service modules for business logic.
+  - **router**: Handles the routing of the application using React Router.
+  - **utils**: Utility functions and custom hooks.
+  - **redux**: State management using Redux Toolkit.
+  - **pages**: React components representing the main pages of the application.
+  - **assets**: Images and styles used in the application.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Components
 
-### `npm test`
+- **api**: This folder contains endpoint configurations and functions for making server requests. You can find API-related logic here.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **components**: This folder contains reusable UI components that can be used throughout the application. These components are designed for modularity and reusability.
 
-### `npm run build`
+- **layouts**: Layout components help structure the pages of the application. You can define common layout elements here, such as headers and footers.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **interfaces**: This folder contains TypeScript interface definitions for type-checking and ensuring data consistency.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **services**: Service modules in this folder are responsible for implementing business logic. They connect components to the API and handle data manipulation.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **router**: The router folder manages application routing using React Router. It defines the routes and navigational logic.
 
-### `npm run eject`
+- **utils**: Utility functions and custom hooks are placed here. You can find functions for common tasks like working with local storage and creating custom hooks.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **redux**: State management using Redux Toolkit. You can find reducers, actions, and store configuration here.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **pages**: React components representing the main pages of the application. These components are rendered for different routes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **assets**: This folder contains images and styles used in the application, including styles written in SCSS modules.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Feel free to explore these folders and files to understand the project's structure and components.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
