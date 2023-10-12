@@ -1,0 +1,14 @@
+@import "../../assets/styles/index.scss";
+
+
+.list {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+
+   .title {
+      font-size: 25px;
+      color: rgb(20, 80, 155);
+   }
+}
+

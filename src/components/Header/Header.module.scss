@@ -1,0 +1,19 @@
+@import "../../assets/styles/index.scss";
+
+.header {
+   background-color: rgb(20, 80, 155);
+   margin-bottom: 10px;
+
+   .content {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .logo {
+         font-size: 25px;
+         color: white;
+      }
+   }
+
+}

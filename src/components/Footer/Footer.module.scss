@@ -1,0 +1,24 @@
+@import "../../assets/styles/index.scss";
+
+
+.footer {
+   margin-top: 60px;
+   position: fixed;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   width: 100%;
+   background-color: rgb(20, 80, 155);
+
+   .content {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .text {
+         color: white;
+
+      }
+   }
+}

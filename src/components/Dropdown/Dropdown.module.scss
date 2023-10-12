@@ -1,0 +1,50 @@
+@import "../../assets/styles/index.scss";
+
+
+
+.dropdownContainer {
+   position: relative;
+   display: inline-block;
+}
+
+
+.addButton {
+   background-color: rgb(247, 143, 30);
+   color: white;
+   border: none;
+   border-radius: 4px;
+   padding: 10px 20px;
+   font-size: 16px;
+   text-align: center;
+   width: 100%;
+   cursor: pointer;
+   transition: background-color 0.2s;
+
+   &:hover {
+      background-color: rgba(250, 143, 30, 0.8);
+   }
+}
+
+.dropdown {
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 100%;
+   max-height: 150px;
+   overflow-y: auto;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   z-index: 1;
+}
+
+.option {
+   padding: 8px;
+   cursor: pointer;
+   transition: background-color 0.2s;
+}
+
+.option:hover {
+   background-color: #f2f2f2;
+}

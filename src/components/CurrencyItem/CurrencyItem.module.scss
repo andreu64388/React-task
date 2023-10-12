@@ -1,0 +1,26 @@
+   @import "../../assets/styles/index.scss";
+
+   .block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+
+      .block__button {
+         border: none;
+         background-color: transparent;
+         padding: 5px;
+         text-align: center;
+         cursor: pointer;
+      }
+
+      .block__name {
+         max-width: 40px;
+         width: 100%;
+         white-space: wrap;
+         font-size: 16px;
+         color: rgb(20, 80, 155);
+         margin-right: 10px;
+
+      }
+   }

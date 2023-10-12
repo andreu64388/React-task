@@ -1,0 +1,21 @@
+@import "../../assets/styles/index.scss";
+
+
+.home {
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+
+   .title {
+      font-size: 25px;
+      color: rgb(20, 80, 155);
+   }
+
+   .content {
+      max-width: 450px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+   }
+}
