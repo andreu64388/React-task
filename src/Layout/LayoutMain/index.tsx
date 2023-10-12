@@ -14,9 +14,7 @@ export const LayoutMain: FC<ILayoutMain> = ({ children }) => {
                {children}
             </main>
          </Container>
-         <div className={styles.footer}>
-            <Footer />
-         </div>
+         <Footer />
       </div>
    )
 }
