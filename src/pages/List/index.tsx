@@ -61,7 +61,6 @@ export const List: FC = () => {
                Array.isArray(currencies) && currencies.length > 0 &&
                <Table data={currencies} columns={columns} />
             }
-
          </main>
          {loading && <div>Loading...</div>}
       </div>
