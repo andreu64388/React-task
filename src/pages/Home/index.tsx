@@ -53,35 +53,32 @@ export const Home: FC = () => {
    return (
       <div className={styles.home}>
          <h1 className={styles.title}>Currency Converter</h1>
-         {loading ? (
-            <Loading />
-         ) : (
-            <main className={styles.content}>
-               {currenciesLoaded && Array.isArray(currencies) && Array.isArray(selectedCurrencies) && currencies
-                  .filter((currency: ICurrency) => !selectedCurrencies.includes(currency.id))
-                  .map((currency: ICurrency) => (
-                     <CurrencyItem
-                        key={currency.id}
-                        currency={currency}
-                        inputValue={inputValues[currency.name]}
-                        onInputChange={handleInputChange}
-                        onRemove={handleRemoveCurrency} />
-                  ))}
-               {currenciesLoaded && Array.isArray(currencies) && Array.isArray(selectedCurrencies) && (
-                  <Dropdown
-                     options={currencies
-                        .filter((currency: ICurrency) => selectedCurrencies.includes(currency.id))
-                        .map((currency: ICurrency) => ({
-                           id: currency.id,
-                           name: currency.name,
-                        }))}
-                     onSelect={(selectedOption: { id: number; name: string }) => handleAddCurrency(selectedOption.id)}
-                  >
-                     Add currency
-                  </Dropdown>
-               )}
-            </main>
-         )}
+         {loading && Array.isArray(currencies) && currencies.length === 0 ? <Loading /> : (<main className={styles.content}>
+            {currenciesLoaded && Array.isArray(currencies) && Array.isArray(selectedCurrencies) && currencies
+               .filter((currency: ICurrency) => !selectedCurrencies.includes(currency.id))
+               .map((currency: ICurrency) => (
+                  <CurrencyItem
+                     key={currency.id}
+                     currency={currency}
+                     inputValue={inputValues[currency.name]}
+                     onInputChange={handleInputChange}
+                     onRemove={handleRemoveCurrency} />
+               ))}
+            <Dropdown
+               options={currencies
+                  .filter((currency: ICurrency) => selectedCurrencies.includes(currency.id))
+                  .map((currency: ICurrency) => ({
+                     id: currency.id,
+                     name: currency.name,
+                  }))}
+               onSelect={(selectedOption: { id: number; name: string }) => handleAddCurrency(selectedOption.id)}
+            >
+               Add currency
+            </Dropdown>
+
+         </main>)}
+
+
       </div>
    );
 }

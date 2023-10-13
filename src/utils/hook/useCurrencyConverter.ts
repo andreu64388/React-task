@@ -14,10 +14,25 @@ export function useCurrencyConverter() {
   const currencies = useAppSelector(selectCurrencies);
   const [inputValues, setInputValues] = useState<InputValues>({});
   const [selectedCurrency, setSelectedCurrency] = useState<string>("USD");
+  const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  ); // Используем NodeJS.Timeout
 
   useEffect(() => {
-    dispatch(fetchCurrencies({ name: selectedCurrency, value: 1 }));
-  }, [dispatch, selectedCurrency]);
+    const storedCurrency = localStorage.getItem("selectedCurrency");
+    const storedValue = localStorage.getItem("selectedValue");
+
+    if (storedCurrency && storedValue) {
+      dispatch(
+        fetchCurrencies({
+          name: storedCurrency,
+          value: parseFloat(storedValue),
+        })
+      );
+    } else {
+      dispatch(fetchCurrencies({ name: "USD", value: 1 }));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     const initialInputValues: InputValues = {};
@@ -31,23 +46,12 @@ export function useCurrencyConverter() {
 
   const calculateConvertedValues = (name: string, value: string) => {
     const numericValue = value === "" ? 0 : parseFloat(value);
-    const updatedInputValues: InputValues = {};
 
-    for (const currency of currencies) {
-      if (currency.name !== name) {
-        const convertedValue = (
-          (numericValue / currencies.find((c: any) => c.name === name)?.value) *
-          currency.value
-        ).toFixed(2);
-
-        updatedInputValues[currency.name] = convertedValue;
-      }
-    }
-
-    setInputValues((prevInputValues) => ({
-      ...prevInputValues,
-      ...updatedInputValues,
-    }));
+    const data = {
+      name: name,
+      value: numericValue,
+    };
+    dispatch(fetchCurrencies(data));
   };
 
   const handleInputChange = (name: string, value: string) => {
@@ -56,7 +60,15 @@ export function useCurrencyConverter() {
       [name]: value,
     }));
 
-    calculateConvertedValues(name, value);
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout);
+    }
+
+    const newDebounceTimeout = setTimeout(() => {
+      calculateConvertedValues(name, value);
+    }, 500);
+
+    setDebounceTimeout(newDebounceTimeout);
   };
 
   const setSelectedCurrencyAndSaveToLocalStorage = (currency: string) => {
