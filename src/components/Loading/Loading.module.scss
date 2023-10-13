@@ -14,11 +14,6 @@
    border-bottom: 60px solid transparent;
    margin: 0 10px;
    animation: changeColor 1s infinite alternate;
-
-   @media (max-width:400px) {
-      background-color: red;
-   }
-
 }
 
 @keyframes changeColor {
