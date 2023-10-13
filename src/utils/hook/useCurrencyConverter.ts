@@ -16,8 +16,8 @@ export function useCurrencyConverter() {
   const [selectedCurrency, setSelectedCurrency] = useState<string>("USD");
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(
     null
-  ); // Используем NodeJS.Timeout
-
+  );
+  const [activeInput, setActiveInput] = useState<string>(""); // Стейт для активного поля ввода
   useEffect(() => {
     const storedCurrency = localStorage.getItem("selectedCurrency");
     const storedValue = localStorage.getItem("selectedValue");
@@ -38,11 +38,17 @@ export function useCurrencyConverter() {
     const initialInputValues: InputValues = {};
     if (Array.isArray(currencies)) {
       currencies.forEach((currency: any) => {
-        initialInputValues[currency.name] = currency.value.toString();
+        const currencyName = currency.name;
+        if (currency.value !== null && currency.value !== undefined) {
+          const currencyValue = currency.value.toString();
+          if (currencyName !== activeInput) {
+            initialInputValues[currencyName] = currencyValue;
+          }
+        }
       });
     }
     setInputValues(initialInputValues);
-  }, [currencies]);
+  }, [currencies, activeInput]);
 
   const calculateConvertedValues = (name: string, value: string) => {
     const numericValue = value === "" ? 0 : parseFloat(value);
@@ -55,6 +61,9 @@ export function useCurrencyConverter() {
   };
 
   const handleInputChange = (name: string, value: string) => {
+    setActiveInput(name);
+    const prevValue = inputValues[name];
+
     setInputValues((prevInputValues) => ({
       ...prevInputValues,
       [name]: value,
@@ -65,7 +74,9 @@ export function useCurrencyConverter() {
     }
 
     const newDebounceTimeout = setTimeout(() => {
-      calculateConvertedValues(name, value);
+      if (prevValue !== value) {
+        calculateConvertedValues(name, value);
+      }
     }, 500);
 
     setDebounceTimeout(newDebounceTimeout);
