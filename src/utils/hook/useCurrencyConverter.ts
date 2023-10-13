@@ -69,6 +69,9 @@ export function useCurrencyConverter() {
     }, 500);
 
     setDebounceTimeout(newDebounceTimeout);
+
+    localStorage.setItem("selectedCurrency", name);
+    localStorage.setItem("selectedValue", value);
   };
 
   const setSelectedCurrencyAndSaveToLocalStorage = (currency: string) => {
